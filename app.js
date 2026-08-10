@@ -60,10 +60,31 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.06 });
   document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
-  // ═══ Navbar Scroll ═══
+  // ═══ Navbar Scroll & ScrollSpy ═══
   const nav = document.getElementById('mainNav');
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-mid a');
+
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 50);
+
+    // ScrollSpy active link detection
+    let current = '';
+    const scrollY = window.pageYOffset;
+    sections.forEach(sec => {
+      const sectionTop = sec.offsetTop - 120;
+      const sectionHeight = sec.offsetHeight;
+      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+        current = sec.getAttribute('id');
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + current) {
+        link.classList.add('active');
+      }
+    });
   }, { passive: true });
 
   // ═══ Mobile Menu ═══
@@ -498,6 +519,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function tweenNum(id, target, prefix = '') {
     const el = document.getElementById(id);
+    if (!el) return;
     const cur = parseInt(el.textContent.replace(/[$,]/g, '')) || 0;
     const diff = target - cur;
     let step = 0;
@@ -508,5 +530,39 @@ document.addEventListener('DOMContentLoaded', () => {
       if (step >= total) clearInterval(iv);
     }, 16);
   }
+
+  // ═══ Image Lightbox Modal ═══
+  window.openImageModal = function(src, title) {
+    const modal = document.getElementById('imageModal');
+    const modalSrc = document.getElementById('imageModalSrc');
+    const modalTitle = document.getElementById('imageModalTitle');
+    if (modal && modalSrc) {
+      modalSrc.src = src;
+      if (modalTitle) modalTitle.textContent = title || 'Previsualizacion del Modulo';
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+  };
+
+  const imgModal = document.getElementById('imageModal');
+  const imgClose = document.getElementById('imageModalClose');
+  if (imgModal && imgClose) {
+    imgClose.addEventListener('click', () => {
+      imgModal.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+    imgModal.addEventListener('click', (e) => {
+      if (e.target === imgModal) {
+        imgModal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+
+  document.querySelectorAll('.bento-eye-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+  });
 
 });
