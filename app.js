@@ -161,12 +161,12 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('quickAddSimBtn')?.addEventListener('click', () => {
         const popularIds = ['viewer', 'branding', 'approval'];
         popularIds.forEach(id => {
-          const card = document.querySelector(`.bento-card[data-id="${id}"]`);
+          const card = document.querySelector(`.bento-card[data-id="${id}"]`) || document.querySelector(`.feature-card[data-id="${id}"]`);
           if (card && !cart.find(i => i.id === id)) {
             cart.push({ id, name: card.dataset.name, price: parseInt(card.dataset.price) });
             const btn = card.querySelector('.add-to-cart-btn');
             btn.textContent = 'Agregado';
-            btn.style.background = '#059669';
+            btn.style.background = 'var(--navy)';
             btn.style.color = '#fff';
           }
         });
@@ -235,7 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   window.addToCart = function(id) {
-    const card = document.querySelector(`.bento-card[data-id="${id}"]`);
+    const card = document.querySelector(`.bento-card[data-id="${id}"]`) || document.querySelector(`.feature-card[data-id="${id}"]`);
     if (!card) return;
     if (cart.find(i => i.id === id)) {
       openCart();
@@ -245,7 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const btn = card.querySelector('.add-to-cart-btn');
     if (btn) {
       btn.textContent = 'Agregado';
-      btn.style.background = '#059669';
+      btn.style.background = 'var(--navy)';
       btn.style.color = '#fff';
     }
     renderCart();
@@ -510,9 +510,9 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         const r = document.getElementById('signResult');
         r.style.display = 'block';
-        r.innerHTML = `<strong style="color:#059669;">Firma verificada</strong><br>SHA-256: ${hex}`;
+        r.innerHTML = `<strong style="color:var(--blue-glow);">Firma verificada</strong><br>SHA-256: ${hex}`;
         this.innerHTML = 'Firmado';
-        this.style.background = '#059669';
+        this.style.background = 'var(--navy)';
       }, 900);
     });
   }
