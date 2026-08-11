@@ -1616,3 +1616,30 @@ body::after {
     font-size: 0.8rem;
   }
 }
+
+/* ═══════════════════════════════════
+   WEB SHOWCASE GRID (RESPONSIVE FIX)
+   ═══════════════════════════════════ */
+.web-showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+
+@media (max-width: 900px) {
+  .web-showcase-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .web-showcase-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem;
+  }
+  .web-showcase-grid img {
+    height: 220px !important;
+  }
+}
