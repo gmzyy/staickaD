@@ -223,6 +223,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   renderCart();
 
+  window.showToast = function(msg) {
+    const toast = document.getElementById('toastNotification');
+    const toastMsg = document.getElementById('toastMsg');
+    if (!toast) return;
+    if (toastMsg) toastMsg.textContent = msg || 'Agregado a tu configuración';
+    toast.classList.add('active');
+    setTimeout(() => {
+      toast.classList.remove('active');
+    }, 2800);
+  };
+
   window.addToCart = function(id) {
     const card = document.querySelector(`.bento-card[data-id="${id}"]`);
     if (!card) return;
@@ -238,6 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.style.color = '#fff';
     }
     renderCart();
+    showToast(`Módulo "${card.dataset.name}" agregado a tu carrito`);
     openCart();
   };
 
@@ -564,5 +576,171 @@ document.addEventListener('DOMContentLoaded', () => {
       e.stopPropagation();
     });
   });
+
+  // ═══ MARKETPLACE SEARCH & FILTERING ═══
+  const shopSearchInput = document.getElementById('shopSearchInput');
+  const shopSortSelect = document.getElementById('shopSortSelect');
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const productCards = document.querySelectorAll('.shop-product-card');
+
+  function filterProducts() {
+    const query = (shopSearchInput ? shopSearchInput.value.toLowerCase().trim() : '');
+    const activeCatBtn = document.querySelector('.filter-btn.active');
+    const cat = activeCatBtn ? activeCatBtn.getAttribute('data-cat') : 'all';
+
+    productCards.forEach(card => {
+      const name = (card.getAttribute('data-name') || '').toLowerCase();
+      const cardCat = card.getAttribute('data-cat') || '';
+      const text = card.textContent.toLowerCase();
+
+      const matchesSearch = query === '' || name.includes(query) || text.includes(query);
+      const matchesCat = cat === 'all' || cardCat === cat;
+
+      if (matchesSearch && matchesCat) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  if (shopSearchInput) {
+    shopSearchInput.addEventListener('input', filterProducts);
+  }
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      filterProducts();
+    });
+  });
+
+  if (shopSortSelect) {
+    shopSortSelect.addEventListener('change', () => {
+      const val = shopSortSelect.value;
+      const grid = document.getElementById('productsGrid');
+      if (!grid) return;
+      const cardsArr = Array.from(productCards);
+      cardsArr.sort((a, b) => {
+        const priceA = parseFloat(a.getAttribute('data-price')) || 0;
+        const priceB = parseFloat(b.getAttribute('data-price')) || 0;
+        const ratingA = parseFloat(a.getAttribute('data-rating')) || 0;
+        const ratingB = parseFloat(b.getAttribute('data-rating')) || 0;
+        if (val === 'price-low') return priceA - priceB;
+        if (val === 'price-high') return priceB - priceA;
+        if (val === 'rating') return ratingB - ratingA;
+        return 0;
+      });
+      cardsArr.forEach(c => grid.appendChild(c));
+    });
+  }
+
+  // ═══ LIVE TECH API PRODUCTS FETCH ═══
+  async function loadApiProducts() {
+    const grid = document.getElementById('apiProductsGrid');
+    if (!grid) return;
+
+    try {
+      // Fetch Tech Products: Laptops & Smartphones from API
+      const res1 = await fetch('https://dummyjson.com/products/category/laptops');
+      const res2 = await fetch('https://dummyjson.com/products/category/smartphones');
+      const data1 = res1.ok ? await res1.json() : { products: [] };
+      const data2 = res2.ok ? await res2.json() : { products: [] };
+      
+      let products = [...(data1.products || []), ...(data2.products || [])].slice(0, 8);
+
+      // Fallback to electronics if empty
+      if (!products || products.length === 0) {
+        const res = await fetch('https://fakestoreapi.com/products/category/electronics');
+        const fallback = await res.json();
+        products = fallback.slice(0, 8).map(p => ({
+          id: p.id,
+          title: p.title,
+          description: p.description,
+          price: p.price,
+          rating: p.rating?.rate || 4.8,
+          category: 'tecnologia',
+          thumbnail: p.image
+        }));
+      }
+
+      grid.innerHTML = ''; // clear loading spinner
+
+      products.forEach(p => {
+        const priceMxn = Math.round((p.price || 999) * 18);
+        const safeTitle = (p.title || 'Producto Tech').replace(/'/g, "\\'");
+        const cardHtml = `
+          <article class="shop-product-card" data-cat="api-feed" data-price="${priceMxn}" data-rating="${p.rating || 4.9}" data-name="${p.title}">
+            <div class="card-img-wrap">
+              <img src="${p.thumbnail}" alt="${p.title}" loading="lazy">
+              <span class="product-badge" style="background:#000D4A;">HARDWARE CORPORATIVO</span>
+              <button class="card-quick-view" onclick="openImageModal('${p.thumbnail}', '${safeTitle}')">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                Vista Previa
+              </button>
+            </div>
+            <div class="card-content">
+              <div class="card-meta">
+                <span class="card-category">INFRAESTRUCTURA &bull; ${p.category ? p.category.toUpperCase() : 'EQUIPAMIENTO'}</span>
+                <span class="card-rating">★ ${p.rating || 4.9}</span>
+              </div>
+              <h3 class="card-title" style="font-size:0.92rem;">${p.title}</h3>
+              <p class="card-desc">${p.description}</p>
+              <div class="card-footer">
+                <div class="card-price-box">
+                  <span class="price-amount">$${priceMxn.toLocaleString()} MXN</span>
+                  <span class="price-period">/unidad</span>
+                </div>
+                <button class="btn-shop-add" onclick="addCustomProductToCart('${p.id}', '${safeTitle}', ${priceMxn})">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                  Agregar
+                </button>
+              </div>
+            </div>
+          </article>
+        `;
+        grid.insertAdjacentHTML('beforeend', cardHtml);
+      });
+
+      const badge = document.getElementById('apiCountBadge');
+      if (badge) badge.textContent = products.length;
+
+    } catch (err) {
+      console.warn('Fallback API trigger:', err);
+      grid.innerHTML = `<p style="grid-column:1/-1;text-align:center;color:var(--slate);">No se pudieron cargar los productos tecnológicos de la API.</p>`;
+    }
+  }
+
+  // Helper for adding custom API products to cart
+  window.addCustomProductToCart = function(id, name, price) {
+    const existing = cart.find(item => item.id === 'api-' + id);
+    if (!existing) {
+      cart.push({ id: 'api-' + id, name: name, price: price });
+      renderCart();
+    }
+    showToast(`"${name}" agregado a tu carrito`);
+    openCart();
+  };
+
+  // Switch Shop Section Tabs
+  window.switchShopTab = function(tabType) {
+    const tabSoftwareBtn = document.getElementById('tabSoftwareBtn');
+    const tabHardwareBtn = document.getElementById('tabHardwareBtn');
+    const softwareHeader = document.getElementById('softwareHeader');
+    const apiProductsSection = document.getElementById('apiProductsSection');
+
+    if (tabType === 'software') {
+      if (tabSoftwareBtn) tabSoftwareBtn.classList.add('active');
+      if (tabHardwareBtn) tabHardwareBtn.classList.remove('active');
+      if (softwareHeader) softwareHeader.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else if (tabType === 'hardware') {
+      if (tabHardwareBtn) tabHardwareBtn.classList.add('active');
+      if (tabSoftwareBtn) tabSoftwareBtn.classList.remove('active');
+      if (apiProductsSection) apiProductsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  loadApiProducts();
 
 });

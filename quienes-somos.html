@@ -34,7 +34,7 @@
       <ul class="nav-mid">
         <li><a href="index.html">Inicio</a></li>
         <li><a href="quienes-somos.html" class="active">Nosotros</a></li>
-        <li><a href="index.html#modulos">Catalogo</a></li>
+        <li><a href="catalogo.html">Marketplace</a></li>
         <li><a href="index.html#visor">Demo</a></li>
         <li><a href="index.html#roi">ROI</a></li>
       </ul>
@@ -43,7 +43,7 @@
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
           <span class="nav-cart-count" id="cartCount">0</span>
         </button>
-        <button class="nav-cta" onclick="location.href='index.html#modulos'">Explorar</button>
+        <button class="nav-cta" onclick="location.href='catalogo.html'">Explorar Marketplace</button>
         <button class="nav-hamburger" id="hamburgerBtn" aria-label="Menu">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         </button>
@@ -51,17 +51,84 @@
     </nav>
   </div>
 
-  <!-- Mobile Menu -->
+  <!-- Ultra-Interactive Mobile Menu Drawer -->
   <div class="mobile-menu" id="mobileMenu">
-    <button class="mobile-menu-close" id="mobileMenuClose">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
-    <a href="index.html" class="mobile-menu-link">Inicio</a>
-    <a href="quienes-somos.html" class="mobile-menu-link">Nosotros</a>
-    <a href="index.html#modulos" class="mobile-menu-link">Catalogo</a>
-    <a href="index.html#visor" class="mobile-menu-link">Demo en Vivo</a>
-    <a href="index.html#roi" class="mobile-menu-link">ROI</a>
-    <a href="#" class="mobile-menu-link" id="mobileCartLink">Carrito</a>
+    <div class="mobile-menu-header">
+      <div class="mobile-menu-brand">
+        <div class="nav-logo-mark" style="width:24px;height:24px;">
+          <div class="nav-logo-block"></div>
+        </div>
+        <span style="font-family:var(--font-sans);font-weight:800;font-size:0.95rem;color:#ffffff;letter-spacing:-0.02em;">STAICKA OS</span>
+      </div>
+      <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Cerrar menú">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="mobile-menu-nav">
+      <a href="index.html" class="mobile-nav-item mobile-menu-link">
+        <span class="nav-icon-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </span>
+        <div class="nav-item-content">
+          <span class="nav-item-title">Inicio & Visión</span>
+          <span class="nav-item-sub">Plataforma principal</span>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+
+      <a href="catalogo.html" class="mobile-nav-item highlight mobile-menu-link">
+        <span class="nav-icon-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        </span>
+        <div class="nav-item-content">
+          <span class="nav-item-title">Marketplace E-Commerce</span>
+          <span class="nav-item-sub">Módulos & Hardware Tech</span>
+        </div>
+        <span class="mobile-badge-hot">MÁS POPULAR</span>
+      </a>
+
+      <a href="quienes-somos.html" class="mobile-nav-item mobile-menu-link">
+        <span class="nav-icon-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 1-0 3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </span>
+        <div class="nav-item-content">
+          <span class="nav-item-title">Quiénes Somos</span>
+          <span class="nav-item-sub">Manifiesto & Equipo</span>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+
+      <a href="index.html#visor" class="mobile-nav-item mobile-menu-link">
+        <span class="nav-icon-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </span>
+        <div class="nav-item-content">
+          <span class="nav-item-title">Demo Interactivo</span>
+          <span class="nav-item-sub">Visor CAD 3D en vivo</span>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+
+      <a href="index.html#roi" class="mobile-nav-item mobile-menu-link">
+        <span class="nav-icon-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </span>
+        <div class="nav-item-content">
+          <span class="nav-item-title">Calculadora ROI</span>
+          <span class="nav-item-sub">Métricas de ahorro</span>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+
+    <!-- Quick Actions Footer inside Drawer -->
+    <div class="mobile-menu-footer">
+      <button class="mobile-cart-preview-btn mobile-menu-link" id="mobileCartLink">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span>Ver mi Carrito de Compras</span>
+      </button>
+    </div>
   </div>
 
   <!-- ═══ ABOUT HERO ═══ -->
@@ -216,9 +283,9 @@
         </form>
       </div>
       <div class="cart-step-foot">
-        <button class="btn-checkout" id="placeOrderBtn">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-          <span>Confirmar pedido</span>
+        <button class="btn-checkout" id="placeOrderBtn" style="background:#059669;color:#ffffff;box-shadow:0 6px 18px rgba(5,150,105,0.25);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <span>Confirmar y Activar Portal</span>
         </button>
       </div>
     </div>

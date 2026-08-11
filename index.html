@@ -33,7 +33,7 @@
       </a>
       <ul class="nav-mid">
         <li><a href="quienes-somos.html">Nosotros</a></li>
-        <li><a href="#modulos">Catalogo</a></li>
+        <li><a href="catalogo.html">Marketplace</a></li>
         <li><a href="#visor">Demo</a></li>
         <li><a href="#roi">ROI</a></li>
       </ul>
@@ -42,7 +42,7 @@
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
           <span class="nav-cart-count" id="cartCount">0</span>
         </button>
-        <button class="nav-cta" onclick="location.href='#modulos'">Explorar</button>
+        <button class="nav-cta" onclick="location.href='catalogo.html'">Explorar Marketplace</button>
         <button class="nav-hamburger" id="hamburgerBtn" aria-label="Menu">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         </button>
@@ -50,16 +50,84 @@
     </nav>
   </div>
 
-  <!-- Mobile Menu -->
+  <!-- Ultra-Interactive Mobile Menu Drawer -->
   <div class="mobile-menu" id="mobileMenu">
-    <button class="mobile-menu-close" id="mobileMenuClose">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
-    <a href="quienes-somos.html" class="mobile-menu-link">Nosotros</a>
-    <a href="#modulos" class="mobile-menu-link">Catalogo</a>
-    <a href="#visor" class="mobile-menu-link">Demo en Vivo</a>
-    <a href="#roi" class="mobile-menu-link">ROI</a>
-    <a href="#" class="mobile-menu-link" id="mobileCartLink">Carrito</a>
+    <div class="mobile-menu-header">
+      <div class="mobile-menu-brand">
+        <div class="nav-logo-mark" style="width:24px;height:24px;">
+          <div class="nav-logo-block"></div>
+        </div>
+        <span style="font-family:var(--font-sans);font-weight:800;font-size:0.95rem;color:#ffffff;letter-spacing:-0.02em;">STAICKA OS</span>
+      </div>
+      <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Cerrar menú">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="mobile-menu-nav">
+      <a href="index.html" class="mobile-nav-item mobile-menu-link">
+        <span class="nav-icon-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </span>
+        <div class="nav-item-content">
+          <span class="nav-item-title">Inicio & Visión</span>
+          <span class="nav-item-sub">Plataforma principal</span>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+
+      <a href="catalogo.html" class="mobile-nav-item highlight mobile-menu-link">
+        <span class="nav-icon-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        </span>
+        <div class="nav-item-content">
+          <span class="nav-item-title">Marketplace E-Commerce</span>
+          <span class="nav-item-sub">Módulos & Hardware Tech</span>
+        </div>
+        <span class="mobile-badge-hot">MÁS POPULAR</span>
+      </a>
+
+      <a href="quienes-somos.html" class="mobile-nav-item mobile-menu-link">
+        <span class="nav-icon-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </span>
+        <div class="nav-item-content">
+          <span class="nav-item-title">Quiénes Somos</span>
+          <span class="nav-item-sub">Manifiesto & Equipo</span>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+
+      <a href="#visor" class="mobile-nav-item mobile-menu-link">
+        <span class="nav-icon-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </span>
+        <div class="nav-item-content">
+          <span class="nav-item-title">Demo Interactivo</span>
+          <span class="nav-item-sub">Visor CAD 3D en vivo</span>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+
+      <a href="#roi" class="mobile-nav-item mobile-menu-link">
+        <span class="nav-icon-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </span>
+        <div class="nav-item-content">
+          <span class="nav-item-title">Calculadora ROI</span>
+          <span class="nav-item-sub">Métricas de ahorro</span>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+
+    <!-- Quick Actions Footer inside Drawer -->
+    <div class="mobile-menu-footer">
+      <button class="mobile-cart-preview-btn mobile-menu-link" id="mobileCartLink">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span>Ver mi Carrito de Compras</span>
+      </button>
+    </div>
   </div>
 
   <!-- ═══ HERO ═══ -->
@@ -71,11 +139,11 @@
         realmente <span class="serif-word">merecen.</span>
       </h1>
       <p class="hero-clean-desc">
-        Reemplaza correos caóticos y chats de WhatsApp por un portal privado, elegante y con tu propia marca. Entregables, revisiones y firmas digitales en un solo lugar.
+        Reemplaza correos caóticos por un portal privado marca blanca y equipa a tu firma con hardware de alto rendimiento. Entregables, revisiones y firmas en un solo lugar.
       </p>
       <div class="hero-clean-actions">
-        <a href="#modulos" class="btn-main">
-          Explorar catalogo
+        <a href="catalogo.html" class="btn-main">
+          Explorar catálogo & Marketplace
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
         </a>
         <a href="#visor" class="btn-link">Probar demo en vivo</a>
@@ -122,6 +190,61 @@
     </div>
   </section>
 
+  <!-- ═══ HARDWARE SHOWCASE SECTION (Inicio) ═══ -->
+  <section class="hardware-home-section" style="padding: 4.5rem 0; background: var(--cream); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="container">
+      <p class="section-eyebrow reveal">EQUIPAMIENTO COMPLEMENTARIO</p>
+      <h2 class="section-heading reveal">También equipamos tu firma con <span class="serif-word">hardware de alto nivel</span></h2>
+      <p class="section-sub reveal">Además del software, proveemos equipamiento corporativo y workstations optimizadas para maximizar la velocidad de tu equipo.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:1.25rem;margin-top:2.5rem;" class="reveal">
+        <!-- Hardware 1 -->
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.5rem;display:flex;flex-direction:column;gap:0.75rem;">
+          <div style="width:42px;height:42px;border-radius:12px;background:rgba(0,13,74,0.05);color:var(--navy);display:flex;align-items:center;justify-content:center;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h4 style="font-family:var(--font-sans);font-weight:800;font-size:1.1rem;color:var(--navy);">Workstations & Laptops Pro</h4>
+          <p style="font-size:0.82rem;color:var(--slate);line-height:1.5;">Laptops y estaciones de trabajo de alta gama configuradas para renders CAD 3D, edición pesada y multitarea sin cuellos de botella.</p>
+          <div style="margin-top:auto;padding-top:0.75rem;border-top:1px dashed var(--border);display:flex;align-items:center;justify-content:space-between;">
+            <span style="font-family:var(--font-mono);font-size:0.72rem;color:var(--blue-glow);font-weight:700;">EQUIPAMIENTO CERO DOWNTIME</span>
+          </div>
+        </div>
+
+        <!-- Hardware 2 -->
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.5rem;display:flex;flex-direction:column;gap:0.75rem;">
+          <div style="width:42px;height:42px;border-radius:12px;background:rgba(5,150,105,0.08);color:#059669;display:flex;align-items:center;justify-content:center;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          </div>
+          <h4 style="font-family:var(--font-sans);font-weight:800;font-size:1.1rem;color:var(--navy);">Dispositivos de Presentación en Sitio</h4>
+          <p style="font-size:0.82rem;color:var(--slate);line-height:1.5;">Tablets profesionales y monitores portátiles para presentar entregables en alta resolución directamente ante tus clientes.</p>
+          <div style="margin-top:auto;padding-top:0.75rem;border-top:1px dashed var(--border);display:flex;align-items:center;justify-content:space-between;">
+            <span style="font-family:var(--font-mono);font-size:0.72rem;color:#059669;font-weight:700;">EXPOSICIÓN VIP</span>
+          </div>
+        </div>
+
+        <!-- Hardware 3 -->
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.5rem;display:flex;flex-direction:column;gap:0.75rem;">
+          <div style="width:42px;height:42px;border-radius:12px;background:rgba(59,111,240,0.08);color:var(--blue-glow);display:flex;align-items:center;justify-content:center;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+          </div>
+          <h4 style="font-family:var(--font-sans);font-weight:800;font-size:1.1rem;color:var(--navy);">Servidores NAS & Bóveda Local</h4>
+          <p style="font-size:0.82rem;color:var(--slate);line-height:1.5;">Sistemas de almacenamiento físico de alta velocidad con sincronización automática en la nube de Staicka para respaldo redundante.</p>
+          <div style="margin-top:auto;padding-top:0.75rem;border-top:1px dashed var(--border);display:flex;align-items:center;justify-content:space-between;">
+            <span style="font-family:var(--font-mono);font-size:0.72rem;color:var(--navy);font-weight:700;">RESPALDO REDUNDANTE</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:2.5rem;" class="reveal">
+        <a href="catalogo.html" class="btn-main" style="display:inline-flex;align-items:center;gap:0.6rem;">
+          <span>Explorar el Catálogo de Hardware & Equipamiento en el Marketplace</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
   <!-- ═══ Marquee ═══ -->
   <div class="marquee-strip">
     <div class="marquee-track">
@@ -160,6 +283,12 @@
           </div>
           <div class="bento-title">Visor de Entregables (Arquitectura)</div>
           <div class="bento-desc">Planos CAD, renders 3D, PDFs legales, dashboards. Visor interactivo con zoom, anotaciones y versionado.</div>
+          
+          <ul class="card-checklist">
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Visor CAD multicapas & 3D en tiempo real</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Control de versiones & anotaciones del cliente</li>
+          </ul>
+
           <div class="bento-price">Desde <strong>$4,200</strong> /mes</div>
           <div style="display:flex;align-items:center;flex-wrap:wrap;margin-top:0.75rem;">
             <button class="bento-cta add-to-cart-btn" onclick="event.stopPropagation(); addToCart('viewer')">Agregar</button>
@@ -178,6 +307,12 @@
           </div>
           <div class="bento-title">Marca Blanca (Branding)</div>
           <div class="bento-desc">Tu logo, colores, tipografia y dominio. El cliente nunca ve "Staicka".</div>
+          
+          <ul class="card-checklist">
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Tu propio subdominio corporativo SSL</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> 0% marcas de agua ni referencias a Staicka</li>
+          </ul>
+
           <div class="bento-price">Desde <strong>$2,800</strong> /mes</div>
           <div style="display:flex;align-items:center;flex-wrap:wrap;margin-top:0.75rem;">
             <button class="bento-cta add-to-cart-btn" onclick="event.stopPropagation(); addToCart('branding')">Agregar</button>
@@ -196,6 +331,12 @@
           </div>
           <div class="bento-title">Firma Digital (Contratos)</div>
           <div class="bento-desc">Aprobacion 1-clic, firma SHA-256 y sello de auditoria en cada entregable.</div>
+          
+          <ul class="card-checklist">
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Sello criptográfico SHA-256 auditable</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Constancia legal de aprobación en 1-clic</li>
+          </ul>
+
           <div class="bento-price">Desde <strong>$2,200</strong> /mes</div>
           <div style="display:flex;align-items:center;flex-wrap:wrap;margin-top:0.75rem;">
             <button class="bento-cta add-to-cart-btn" onclick="event.stopPropagation(); addToCart('approval')">Agregar</button>
@@ -205,6 +346,30 @@
             </button>
           </div>
         </div>
+
+        <!-- Enterprise Suite Showcase Card Banner -->
+        <div class="enterprise-showcase-card reveal">
+          <div>
+            <p style="font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:#34D399;margin-bottom:0.4rem;">PAQUETE COMPLETO RECOMENDADO</p>
+            <h3 style="font-family:var(--font-sans);font-weight:800;font-size:1.4rem;margin-bottom:0.4rem;">Suite Staicka Enterprise All-in-One</h3>
+            <p style="font-size:0.85rem;color:rgba(255,255,255,0.75);max-width:520px;line-height:1.5;">Incluye Visor CAD 3D + Marca Blanca + Firma SHA-256 + Bóveda Ilimitada + Notificaciones Dev. Ahorra 35% mensual.</p>
+          </div>
+          <div style="text-align:right;flex-shrink:0;">
+            <div style="font-family:var(--font-sans);font-weight:800;font-size:1.8rem;">$7,500 <span style="font-size:0.85rem;opacity:0.7;">/mes</span></div>
+            <button class="btn-finish-green" style="margin-top:0.75rem;padding:0.7rem 1.4rem;" onclick="addToCart('viewer'); addToCart('branding'); addToCart('approval');">
+              <span>Contratar Suite Completa</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Marketplace Full Catalog CTA -->
+      <div style="text-align:center;margin-top:2.5rem;" class="reveal">
+        <a href="catalogo.html" class="btn-main" style="display:inline-flex;align-items:center;gap:0.6rem;">
+          <span>Ir al Catálogo Completo (Marketplace estilo Amazon)</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
       </div>
     </div>
   </section>
@@ -405,9 +570,9 @@
         </form>
       </div>
       <div class="cart-step-foot">
-        <button class="btn-checkout" id="placeOrderBtn">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-          <span>Confirmar pedido</span>
+        <button class="btn-checkout" id="placeOrderBtn" style="background:#059669;color:#ffffff;box-shadow:0 6px 18px rgba(5,150,105,0.25);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <span>Confirmar y Activar Portal</span>
         </button>
       </div>
     </div>
@@ -441,6 +606,14 @@
       </div>
       <img id="imageModalSrc" src="" alt="Modulo Preview" style="width:100%;height:auto;max-height:75vh;object-fit:contain;border-radius:12px;border:1px solid var(--border);">
     </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-notification" id="toastNotification">
+    <div class="toast-icon">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <span id="toastMsg">Módulo agregado a tu configuración</span>
   </div>
 
   <script src="app.js"></script>

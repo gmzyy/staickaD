@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo Marketplace — Staicka Client Portal OS</title>
+  <meta name="description" content="Explora el catálogo completo de soluciones marca blanca para tu portal de clientes. Filtra por categoría, precio y funciones.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Active Portal Banner -->
+  <div class="active-portal-banner" id="activePortalBanner">
+    <div style="display:flex;align-items:center;gap:0.5rem;">
+      <span class="active-dot"></span>
+      <span id="activePortalText">Portal Activado para Estudio Creativo Alpha</span>
+    </div>
+    <button onclick="document.getElementById('activePortalBanner').style.display='none'" style="color:#fff;opacity:0.7;font-size:0.75rem;">Cerrar</button>
+  </div>
+
+  <!-- ═══ Capsule Navbar ═══ -->
+  <div class="nav-spacer"></div>
+  <div class="capsule-wrap">
+    <nav class="capsule-nav" id="mainNav">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-blocks">
+          <div class="nav-logo-block"></div>
+          <div class="nav-logo-block"></div>
+          <div class="nav-logo-block"></div>
+          <div class="nav-logo-block"></div>
+        </div>
+        <span>STAICKA</span>
+      </a>
+      <ul class="nav-mid">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="quienes-somos.html">Nosotros</a></li>
+        <li><a href="catalogo.html" class="active">Marketplace</a></li>
+        <li><a href="index.html#visor">Demo</a></li>
+        <li><a href="index.html#roi">ROI</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="nav-cart" id="cartBtn" aria-label="Abrir carrito">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="nav-cart-count" id="cartCount">0</span>
+        </button>
+        <button class="nav-cta" onclick="openCart()">Mi Carrito</button>
+        <button class="nav-hamburger" id="hamburgerBtn" aria-label="Menu">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Ultra-Interactive Mobile Menu Drawer -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <div class="mobile-menu-brand">
+        <div class="nav-logo-mark" style="width:24px;height:24px;">
+          <div class="nav-logo-block"></div>
+        </div>
+        <span style="font-family:var(--font-sans);font-weight:800;font-size:0.95rem;color:#ffffff;letter-spacing:-0.02em;">STAICKA OS</span>
+      </div>
+      <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Cerrar menú">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="mobile-menu-nav">
+      <a href="index.html" class="mobile-nav-item mobile-menu-link">
+        <span class="nav-icon-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </span>
+        <div class="nav-item-content">
+          <span class="nav-item-title">Inicio & Visión</span>
+          <span class="nav-item-sub">Plataforma principal</span>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+
+      <a href="catalogo.html" class="mobile-nav-item highlight mobile-menu-link">
+        <span class="nav-icon-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        </span>
+        <div class="nav-item-content">
+          <span class="nav-item-title">Marketplace E-Commerce</span>
+          <span class="nav-item-sub">Módulos & Hardware Tech</span>
+        </div>
+        <span class="mobile-badge-hot">MÁS POPULAR</span>
+      </a>
+
+      <a href="quienes-somos.html" class="mobile-nav-item mobile-menu-link">
+        <span class="nav-icon-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </span>
+        <div class="nav-item-content">
+          <span class="nav-item-title">Quiénes Somos</span>
+          <span class="nav-item-sub">Manifiesto & Equipo</span>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+
+      <a href="index.html#visor" class="mobile-nav-item mobile-menu-link">
+        <span class="nav-icon-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </span>
+        <div class="nav-item-content">
+          <span class="nav-item-title">Demo Interactivo</span>
+          <span class="nav-item-sub">Visor CAD 3D en vivo</span>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+
+      <a href="index.html#roi" class="mobile-nav-item mobile-menu-link">
+        <span class="nav-icon-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </span>
+        <div class="nav-item-content">
+          <span class="nav-item-title">Calculadora ROI</span>
+          <span class="nav-item-sub">Métricas de ahorro</span>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+
+    <!-- Quick Actions Footer inside Drawer -->
+    <div class="mobile-menu-footer">
+      <button class="mobile-cart-preview-btn mobile-menu-link" id="mobileCartLink">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span>Ver mi Carrito de Compras</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ═══ MARKETPLACE HERO / SEARCH BAR ═══ -->
+  <section class="shop-hero">
+    <div class="container">
+      <div class="shop-hero-inner">
+        <p class="section-eyebrow" style="margin-bottom:0.5rem;">TIENDA & CATÁLOGO OFICIAL</p>
+        <h1 class="shop-title">Módulos & Soluciones <span class="serif-word">Marca Blanca</span></h1>
+        <p class="shop-subtitle">Explora y arma la combinación perfecta para tu portal de clientes. Activación inmediata con tu propio dominio.</p>
+        
+        <!-- Search and Filter Control -->
+        <div class="shop-search-bar">
+          <div class="search-input-wrap">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="shopSearchInput" placeholder="Buscar módulo (ej. CAD, Marca Blanca, Firma, Bóveda)...">
+          </div>
+          <select id="shopSortSelect" class="shop-sort-dropdown">
+            <option value="popular">Más Populares</option>
+            <option value="price-low">Precio: Menor a Mayor</option>
+            <option value="price-high">Precio: Mayor a Menor</option>
+            <option value="rating">Mejor Calificados ★</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ MARKETPLACE BODY (TABS + SIDEBAR + GRID) ═══ -->
+  <section class="shop-body-section">
+    <div class="container">
+
+      <!-- Main Marketplace Tabs (Separación Clara) -->
+      <div class="shop-main-tabs">
+        <button class="shop-tab-btn active" id="tabSoftwareBtn" onclick="switchShopTab('software')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          <span>1. Módulos & Portales de Software</span>
+          <span class="tab-pill">6 Soluciones</span>
+        </button>
+        <button class="shop-tab-btn" id="tabHardwareBtn" onclick="switchShopTab('hardware')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          <span>2. Hardware & Equipamiento Corporativo</span>
+          <span class="tab-pill green">8 Productos API</span>
+        </button>
+      </div>
+
+    </div>
+
+    <div class="container shop-layout">
+
+      <!-- Sidebar Filters -->
+      <aside class="shop-sidebar">
+        <div class="filter-group">
+          <h4 class="filter-title">Categorías</h4>
+          <ul class="filter-list">
+            <li><button class="filter-btn active" data-cat="all">Todas las soluciones <span class="count-badge">14</span></button></li>
+            <li><button class="filter-btn" data-cat="arquitectura">Arquitectura & CAD <span class="count-badge">1</span></button></li>
+            <li><button class="filter-btn" data-cat="branding">Branding & Marca <span class="count-badge">1</span></button></li>
+            <li><button class="filter-btn" data-cat="legal">Legal & Firma SHA-256 <span class="count-badge">1</span></button></li>
+            <li><button class="filter-btn" data-cat="vault">Bóveda & Storage <span class="count-badge">1</span></button></li>
+            <li><button class="filter-btn" data-cat="gestion">Gestión de Hitos <span class="count-badge">1</span></button></li>
+            <li><button class="filter-btn" data-cat="dev">Notificaciones & Dev <span class="count-badge">1</span></button></li>
+            <li><button class="filter-btn" data-cat="api-feed"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:middle;margin-right:0.25rem;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Hardware & Equipamiento <span class="count-badge" id="apiCountBadge">8</span></button></li>
+          </ul>
+        </div>
+
+        <div class="filter-group" style="margin-top:2rem;">
+          <h4 class="filter-title">Garantía Staicka</h4>
+          <div class="guarantee-box">
+            <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.4rem;color:var(--navy);font-weight:700;font-size:0.85rem;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              Marca Blanca 100%
+            </div>
+            <p style="font-size:0.75rem;color:var(--slate);line-height:1.45;">Sin marcas de agua ni logos de Staicka. El cliente siempre interactúa exclusivamente con tu empresa.</p>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Products Marketplace Grid -->
+      <main class="shop-products-grid" id="productsGrid">
+
+        <!-- Section Header 1: Software -->
+        <div class="shop-section-header" id="softwareHeader">
+          <div>
+            <p class="section-eyebrow" style="text-align:left;">SECCIÓN 1 &bull; MÓDULOS DIGITALES</p>
+            <h2 style="font-family:var(--font-sans);font-weight:800;font-size:1.4rem;color:var(--navy);">Soluciones de Software & Portales Marca Blanca</h2>
+          </div>
+          <span style="font-size:0.78rem;color:var(--slate);font-weight:600;">Infraestructura Cloud en tu Dominio</span>
+        </div>
+
+        <!-- Product 1 -->
+        <article class="shop-product-card" data-cat="arquitectura" data-price="4200" data-rating="5.0" data-name="Visor CAD Blueprint">
+          <div class="card-img-wrap">
+            <img src="assets/cad_module.png" alt="Visor CAD Blueprint">
+            <span class="product-badge featured-badge">POPULAR ★ 5.0</span>
+            <button class="card-quick-view" onclick="openImageModal('assets/cad_module.png', 'Visor CAD & Blueprint 3D')">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              Vista Previa
+            </button>
+          </div>
+          <div class="card-content">
+            <div class="card-meta">
+              <span class="card-category">Arquitectura</span>
+              <span class="card-rating">★ 5.0 (42 reseñas)</span>
+            </div>
+            <h3 class="card-title">Visor de Entregables CAD & 3D</h3>
+            <p class="card-desc">Visualizador interactivo de planos de planta, renders 3D y modelos BIM con controles de zoom, capas y comentarios.</p>
+            <div class="card-footer">
+              <div class="card-price-box">
+                <span class="price-amount">$4,200 MXN</span>
+                <span class="price-period">/mes</span>
+              </div>
+              <button class="btn-shop-add add-to-cart-btn" onclick="addToCart('viewer')">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                Agregar
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 2 -->
+        <article class="shop-product-card" data-cat="branding" data-price="2800" data-rating="4.9" data-name="Marca Blanca completa">
+          <div class="card-img-wrap">
+            <img src="assets/whitelabel_module.png" alt="Portal Marca Blanca">
+            <span class="product-badge">TOP VENTAS</span>
+            <button class="card-quick-view" onclick="openImageModal('assets/whitelabel_module.png', 'Portal Marca Blanca & Dominio Personalizado')">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              Vista Previa
+            </button>
+          </div>
+          <div class="card-content">
+            <div class="card-meta">
+              <span class="card-category">Branding</span>
+              <span class="card-rating">★ 4.9 (88 reseñas)</span>
+            </div>
+            <h3 class="card-title">Módulo Marca Blanca Completo</h3>
+            <p class="card-desc">Personalización total con tu subdominio corporativo, logotipo, tipografías oficiales y paleta de colores personalizada.</p>
+            <div class="card-footer">
+              <div class="card-price-box">
+                <span class="price-amount">$2,800 MXN</span>
+                <span class="price-period">/mes</span>
+              </div>
+              <button class="btn-shop-add add-to-cart-btn" onclick="addToCart('branding')">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                Agregar
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 3 -->
+        <article class="shop-product-card" data-cat="legal" data-price="2200" data-rating="4.9" data-name="Firma Digital SHA-256">
+          <div class="card-img-wrap">
+            <img src="assets/b2b_legal_module.png" alt="Firma Digital NDA">
+            <span class="product-badge">JURÍDICO</span>
+            <button class="card-quick-view" onclick="openImageModal('assets/b2b_legal_module.png', 'Firma Digital SHA-256 & Contratos')">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              Vista Previa
+            </button>
+          </div>
+          <div class="card-content">
+            <div class="card-meta">
+              <span class="card-category">Legal & Contratos</span>
+              <span class="card-rating">★ 4.9 (35 reseñas)</span>
+            </div>
+            <h3 class="card-title">Firma Digital & Contratos B2B</h3>
+            <p class="card-desc">Firma en 1-clic con sello criptográfico SHA-256, trazabilidad legal y generación de constancias auditables.</p>
+            <div class="card-footer">
+              <div class="card-price-box">
+                <span class="price-amount">$2,200 MXN</span>
+                <span class="price-period">/mes</span>
+              </div>
+              <button class="btn-shop-add add-to-cart-btn" onclick="addToCart('approval')">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                Agregar
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 4 -->
+        <article class="shop-product-card" data-cat="vault" data-price="1500" data-rating="4.8" data-name="Boveda de Archivos">
+          <div class="card-img-wrap">
+            <img src="assets/vault_module.png" alt="Bóveda de Archivos Segura">
+            <button class="card-quick-view" onclick="openImageModal('assets/vault_module.png', 'Bóveda de Archivos Encriptada')">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              Vista Previa
+            </button>
+          </div>
+          <div class="card-content">
+            <div class="card-meta">
+              <span class="card-category">Vault & Storage</span>
+              <span class="card-rating">★ 4.8 (29 reseñas)</span>
+            </div>
+            <h3 class="card-title">Bóveda de Archivos Encriptada</h3>
+            <p class="card-desc">Repositorio seguro de almacenamiento con control granular de accesos por cliente, historial de versiones y descargas protegidas.</p>
+            <div class="card-footer">
+              <div class="card-price-box">
+                <span class="price-amount">$1,500 MXN</span>
+                <span class="price-period">/mes</span>
+              </div>
+              <button class="btn-shop-add add-to-cart-btn" onclick="addToCart('vault')">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                Agregar
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 5 -->
+        <article class="shop-product-card" data-cat="gestion" data-price="1800" data-rating="4.9" data-name="Timeline de Hitos">
+          <div class="card-img-wrap">
+            <img src="assets/creative_module.png" alt="Timeline de Hitos">
+            <button class="card-quick-view" onclick="openImageModal('assets/creative_module.png', 'Timeline de Hitos & Avances')">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              Vista Previa
+            </button>
+          </div>
+          <div class="card-content">
+            <div class="card-meta">
+              <span class="card-category">Gestión</span>
+              <span class="card-rating">★ 4.9 (51 reseñas)</span>
+            </div>
+            <h3 class="card-title">Timeline de Hitos & Avances</h3>
+            <p class="card-desc">Línea de tiempo interactiva que muestra a tu cliente el progreso porcentual del proyecto, etapas completadas y fechas comprometidas.</p>
+            <div class="card-footer">
+              <div class="card-price-box">
+                <span class="price-amount">$1,800 MXN</span>
+                <span class="price-period">/mes</span>
+              </div>
+              <button class="btn-shop-add add-to-cart-btn" onclick="addToCart('timeline')">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                Agregar
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 6 -->
+        <article class="shop-product-card" data-cat="dev" data-price="900" data-rating="4.7" data-name="Notificaciones Dev">
+          <div class="card-img-wrap">
+            <img src="assets/software_dev_module.png" alt="Monitor de Eventos">
+            <button class="card-quick-view" onclick="openImageModal('assets/software_dev_module.png', 'Monitor de Notificaciones & Eventos')">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              Vista Previa
+            </button>
+          </div>
+          <div class="card-content">
+            <div class="card-meta">
+              <span class="card-category">Automatización</span>
+              <span class="card-rating">★ 4.7 (19 reseñas)</span>
+            </div>
+            <h3 class="card-title">Notificaciones & Eventos Dev</h3>
+            <p class="card-desc">Alertas automatizadas por email y notificaciones push en el portal cuando se suben nuevos entregables o se aprueban cambios.</p>
+            <div class="card-footer">
+              <div class="card-price-box">
+                <span class="price-amount">$900 MXN</span>
+                <span class="price-period">/mes</span>
+              </div>
+              <button class="btn-shop-add add-to-cart-btn" onclick="addToCart('notifications')">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                Agregar
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Live API Products Header & Container -->
+        <div style="grid-column: 1 / -1; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border);" id="apiProductsSection">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;flex-wrap:wrap;gap:0.5rem;">
+            <div>
+              <p class="section-eyebrow" style="text-align:left;">EQUIPAMIENTO COMPLEMENTARIO</p>
+              <h2 style="font-family:var(--font-sans);font-weight:800;font-size:1.4rem;color:var(--navy);">Hardware & Equipamiento <span class="serif-word" style="font-family:var(--font-display);font-style:italic;font-weight:400;">Corporativo</span></h2>
+            </div>
+            <span style="font-family:var(--font-mono);font-size:0.72rem;background:#ECFDF5;color:#059669;padding:0.35rem 0.8rem;border-radius:999px;border:1px solid #A7F3D0;display:inline-flex;align-items:center;gap:0.4rem;">
+              <span class="active-dot"></span> Catálogo en Tiempo Real
+            </span>
+          </div>
+
+          <div class="shop-products-grid" id="apiProductsGrid">
+            <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--slate);">
+              <div class="spinner" style="margin: 0 auto 1rem;"></div>
+              <p style="font-size:0.9rem;">Cargando catálogo de equipamiento tecnológico...</p>
+            </div>
+          </div>
+        </div>
+
+      </main>
+
+    </div>
+  </section>
+
+  <!-- ═══ Footer ═══ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">
+          <img src="assets/image.png" alt="Staicka">
+          <span>STAICKA</span>
+        </div>
+        <p style="font-size:0.72rem;">2026 Staicka. Client Portal OS Marketplace.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══ Cart Drawer with Purchase Flow ═══ -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <!-- Step 1: Cart -->
+    <div class="cart-step active" id="cartStep1">
+      <div class="cart-drawer-head">
+        <h3>Tu configuracion</h3>
+        <button id="cartClose" aria-label="Cerrar" style="color:var(--slate);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="cart-drawer-body" id="cartBody"></div>
+      <div class="cart-drawer-foot">
+        <div class="cart-total-row"><span>Subtotal</span><span id="cartSubtotal">$0</span></div>
+        <div class="cart-total-row"><span>IVA 16%</span><span id="cartTax">$0</span></div>
+        <div class="cart-total-row grand"><span>Total / mes</span><span id="cartTotal">$0</span></div>
+        <button class="btn-checkout" style="margin-top:0.85rem;" id="goToCheckout" disabled>
+          <span>Continuar a checkout</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Step 2: Checkout Form -->
+    <div class="cart-step" id="cartStep2">
+      <div class="cart-step-head" style="display:flex;align-items:center;gap:0.75rem;">
+        <button class="btn-back-nav" id="backToCart" aria-label="Volver">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        </button>
+        <h3 style="font-family:var(--font-sans);font-weight:700;font-size:1rem;">Datos de contacto</h3>
+      </div>
+      <div class="cart-step-body">
+        <form id="checkoutForm" style="display:flex;flex-direction:column;gap:0.85rem;" onsubmit="return false;">
+          <div>
+            <label class="checkout-label">Nombre completo</label>
+            <input class="checkout-input" type="text" id="cName" placeholder="Estudio Creativo Alpha">
+          </div>
+          <div>
+            <label class="checkout-label">Email corporativo</label>
+            <input class="checkout-input" type="email" id="cEmail" placeholder="contacto@alpha.com">
+          </div>
+          <div>
+            <label class="checkout-label">Empresa</label>
+            <input class="checkout-input" type="text" id="cCompany" placeholder="Alpha Design Group">
+          </div>
+          <div>
+            <label class="checkout-label">Telefono</label>
+            <input class="checkout-input" type="tel" id="cPhone" placeholder="+52 55 1234 5678">
+          </div>
+          <div style="margin-top:0.5rem;">
+            <p style="font-family:var(--font-mono);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--slate-light);margin-bottom:0.5rem;">Resumen de Compra</p>
+            <div id="checkoutSummary"></div>
+            <div style="display:flex;justify-content:space-between;font-weight:800;font-size:0.95rem;margin-top:0.5rem;padding-top:0.5rem;border-top:1px dashed var(--border);">
+              <span>Total / mes</span><span id="checkoutTotal">$0 MXN</span>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="cart-step-foot">
+        <button class="btn-checkout" id="placeOrderBtn" style="background:#059669;color:#ffffff;box-shadow:0 6px 18px rgba(5,150,105,0.25);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <span>Confirmar y Activar Portal</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Step 3: Confirmation Receipt -->
+    <div class="cart-step" id="cartStep3">
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1.5rem;text-align:center;overflow-y:auto;">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <h3 style="font-family:var(--font-sans);font-weight:800;font-size:1.2rem;margin:0.75rem 0 0.25rem;">¡Compra Completada!</h3>
+        <p style="color:var(--slate);font-size:0.82rem;max-width:280px;">Tu portal ha sido activado con exito. A continuacion tienes tu comprobante:</p>
+        
+        <div id="orderReceiptBox" style="width:100%;"></div>
+
+        <button class="btn-finish-green" style="margin-top:0.5rem;" id="closeAfterOrder">
+          <span>Finalizar y Ver Portal</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ═══ Image Lightbox Modal ═══ -->
+  <div class="modal-bg" id="imageModal">
+    <div class="modal-box" style="max-width:720px;padding:1.5rem;text-align:center;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+        <h3 id="imageModalTitle" style="font-family:var(--font-sans);font-weight:700;font-size:1.05rem;color:var(--navy);">Previsualizacion del Modulo</h3>
+        <button id="imageModalClose" style="color:var(--slate);cursor:pointer;padding:0.3rem;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <img id="imageModalSrc" src="" alt="Modulo Preview" style="width:100%;height:auto;max-height:75vh;object-fit:contain;border-radius:12px;border:1px solid var(--border);">
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-notification" id="toastNotification">
+    <div class="toast-icon">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <span id="toastMsg">Módulo agregado a tu configuración</span>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
