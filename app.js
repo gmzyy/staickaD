@@ -636,80 +636,108 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ═══ LIVE TECH API PRODUCTS FETCH ═══
+  // ═══ LIVE WHITE-LABEL WEB TEMPLATES RENDER ═══
   async function loadApiProducts() {
     const grid = document.getElementById('apiProductsGrid');
     if (!grid) return;
 
-    try {
-      // Fetch Tech Products: Laptops & Smartphones from API
-      const res1 = await fetch('https://dummyjson.com/products/category/laptops');
-      const res2 = await fetch('https://dummyjson.com/products/category/smartphones');
-      const data1 = res1.ok ? await res1.json() : { products: [] };
-      const data2 = res2.ok ? await res2.json() : { products: [] };
-      
-      let products = [...(data1.products || []), ...(data2.products || [])].slice(0, 8);
-
-      // Fallback to electronics if empty
-      if (!products || products.length === 0) {
-        const res = await fetch('https://fakestoreapi.com/products/category/electronics');
-        const fallback = await res.json();
-        products = fallback.slice(0, 8).map(p => ({
-          id: p.id,
-          title: p.title,
-          description: p.description,
-          price: p.price,
-          rating: p.rating?.rate || 4.8,
-          category: 'tecnologia',
-          thumbnail: p.image
-        }));
+    const webTemplates = [
+      {
+        id: 'web-1',
+        title: 'Portal Corporativo de Entregables VIP',
+        description: 'Sitio privado de clientes con acceso por login, entregas protegidas, visor interactivo CAD/PDF y sello SHA-256.',
+        price: 3800,
+        rating: 5.0,
+        category: 'PORTAL MARCA BLANCA',
+        thumbnail: 'assets/whitelabel_portal.png'
+      },
+      {
+        id: 'web-2',
+        title: 'Landing Page de Presentación B2B',
+        description: 'Página web comercial de alta conversión con catálogo interactivo de servicios, formulario de propuesta y agenda.',
+        price: 2500,
+        rating: 4.9,
+        category: 'SITIO COMERCIAL',
+        thumbnail: 'assets/whitelabel_showcase.png'
+      },
+      {
+        id: 'web-3',
+        title: 'Portal de Firma & Auditoría Legal B2B',
+        description: 'Plataforma web con módulo de firma en 1-clic, constancias criptográficas auditables y validez B2B.',
+        price: 2900,
+        rating: 4.9,
+        category: 'LEGAL WEB PORTAL',
+        thumbnail: 'assets/b2b_legal_module.png'
+      },
+      {
+        id: 'web-4',
+        title: 'Dashboard de Gestión de Proyectos & Hitos',
+        description: 'Línea de tiempo web interactiva que muestra el progreso del proyecto, fases completadas y fechas en tiempo real.',
+        price: 2200,
+        rating: 4.8,
+        category: 'GESTIÓN WEB',
+        thumbnail: 'assets/creative_module.png'
+      },
+      {
+        id: 'web-5',
+        title: 'Bóveda Web de Archivos & Documentación',
+        description: 'Repositorio web encriptado de almacenamiento con control granular de accesos por cliente e historial de versiones.',
+        price: 1900,
+        rating: 4.8,
+        category: 'VAULT & STORAGE WEB',
+        thumbnail: 'assets/vault_module.png'
+      },
+      {
+        id: 'web-6',
+        title: 'Visor Web Multicapa CAD & Blueprint 3D',
+        description: 'Visualizador web interactivo para planos de planta, renders 3D y modelos BIM integrados en tu subdominio.',
+        price: 4200,
+        rating: 5.0,
+        category: 'ARQUITECTURA WEB',
+        thumbnail: 'assets/cad_module.png'
       }
+    ];
 
-      grid.innerHTML = ''; // clear loading spinner
+    grid.innerHTML = ''; // clear loading spinner
 
-      products.forEach(p => {
-        const priceMxn = Math.round((p.price || 999) * 18);
-        const safeTitle = (p.title || 'Producto Tech').replace(/'/g, "\\'");
-        const cardHtml = `
-          <article class="shop-product-card" data-cat="api-feed" data-price="${priceMxn}" data-rating="${p.rating || 4.9}" data-name="${p.title}">
-            <div class="card-img-wrap">
-              <img src="${p.thumbnail}" alt="${p.title}" loading="lazy">
-              <span class="product-badge" style="background:#000D4A;">HARDWARE CORPORATIVO</span>
-              <button class="card-quick-view" onclick="openImageModal('${p.thumbnail}', '${safeTitle}')">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                Vista Previa
+    webTemplates.forEach(p => {
+      const priceMxn = p.price;
+      const safeTitle = p.title.replace(/'/g, "\\'");
+      const cardHtml = `
+        <article class="shop-product-card" data-cat="api-feed" data-price="${priceMxn}" data-rating="${p.rating}" data-name="${p.title}">
+          <div class="card-img-wrap">
+            <img src="${p.thumbnail}" alt="${p.title}" loading="lazy">
+            <span class="product-badge" style="background:#000D4A;">MARCA BLANCA</span>
+            <button class="card-quick-view" onclick="openImageModal('${p.thumbnail}', '${safeTitle}')">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              Vista Previa
+            </button>
+          </div>
+          <div class="card-content">
+            <div class="card-meta">
+              <span class="card-category">${p.category}</span>
+              <span class="card-rating">★ ${p.rating}</span>
+            </div>
+            <h3 class="card-title" style="font-size:0.92rem;">${p.title}</h3>
+            <p class="card-desc">${p.description}</p>
+            <div class="card-footer">
+              <div class="card-price-box">
+                <span class="price-amount">$${priceMxn.toLocaleString()} MXN</span>
+                <span class="price-period">/mes</span>
+              </div>
+              <button class="btn-shop-add" onclick="addCustomProductToCart('${p.id}', '${safeTitle}', ${priceMxn})">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                Agregar
               </button>
             </div>
-            <div class="card-content">
-              <div class="card-meta">
-                <span class="card-category">INFRAESTRUCTURA &bull; ${p.category ? p.category.toUpperCase() : 'EQUIPAMIENTO'}</span>
-                <span class="card-rating">★ ${p.rating || 4.9}</span>
-              </div>
-              <h3 class="card-title" style="font-size:0.92rem;">${p.title}</h3>
-              <p class="card-desc">${p.description}</p>
-              <div class="card-footer">
-                <div class="card-price-box">
-                  <span class="price-amount">$${priceMxn.toLocaleString()} MXN</span>
-                  <span class="price-period">/unidad</span>
-                </div>
-                <button class="btn-shop-add" onclick="addCustomProductToCart('${p.id}', '${safeTitle}', ${priceMxn})">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-                  Agregar
-                </button>
-              </div>
-            </div>
-          </article>
-        `;
-        grid.insertAdjacentHTML('beforeend', cardHtml);
-      });
+          </div>
+        </article>
+      `;
+      grid.insertAdjacentHTML('beforeend', cardHtml);
+    });
 
-      const badge = document.getElementById('apiCountBadge');
-      if (badge) badge.textContent = products.length;
-
-    } catch (err) {
-      console.warn('Fallback API trigger:', err);
-      grid.innerHTML = `<p style="grid-column:1/-1;text-align:center;color:var(--slate);">No se pudieron cargar los productos tecnológicos de la API.</p>`;
-    }
+    const badge = document.getElementById('apiCountBadge');
+    if (badge) badge.textContent = webTemplates.length;
   }
 
   // Helper for adding custom API products to cart
