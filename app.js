@@ -644,57 +644,57 @@ document.addEventListener('DOMContentLoaded', () => {
     const webTemplates = [
       {
         id: 'web-1',
-        title: 'Portal Corporativo de Entregables VIP',
-        description: 'Sitio privado de clientes con acceso por login, entregas protegidas, visor interactivo CAD/PDF y sello SHA-256.',
-        price: 3800,
+        title: 'E-Commerce de Ropa Sostenible',
+        description: 'Diseño minimalista con banner principal, paleta neutra y cuadrícula de productos ecológicos.',
+        price: 3500,
         rating: 5.0,
-        category: 'PORTAL MARCA BLANCA',
-        thumbnail: 'assets/whitelabel_portal.png'
+        category: 'FASHION & ECO',
+        thumbnail: 'assets/ropa.png'
       },
       {
         id: 'web-2',
-        title: 'Landing Page de Presentación B2B',
-        description: 'Página web comercial de alta conversión con catálogo interactivo de servicios, formulario de propuesta y agenda.',
-        price: 2500,
+        title: 'Catálogo de Cerámica Artesanal',
+        description: 'Tonos cálidos y naturales con filtros laterales y exhibición de piezas exclusivas hechas a mano.',
+        price: 2800,
         rating: 4.9,
-        category: 'SITIO COMERCIAL',
-        thumbnail: 'assets/whitelabel_showcase.png'
+        category: 'ARTESANAL & DECO',
+        thumbnail: 'assets/ceramica.png'
       },
       {
         id: 'web-3',
-        title: 'Portal de Firma & Auditoría Legal B2B',
-        description: 'Plataforma web con módulo de firma en 1-clic, constancias criptográficas auditables y validez B2B.',
-        price: 2900,
-        rating: 4.9,
-        category: 'LEGAL WEB PORTAL',
-        thumbnail: 'assets/b2b_legal_module.png'
+        title: 'Ficha de Reloj de Lujo',
+        description: 'Tema oscuro y sofisticado con tipografía elegante, renders de alta resolución y detalles VIP.',
+        price: 4200,
+        rating: 5.0,
+        category: 'LUXURY & JEWELRY',
+        thumbnail: 'assets/relojes.png'
       },
       {
         id: 'web-4',
-        title: 'Dashboard de Gestión de Proyectos & Hitos',
-        description: 'Línea de tiempo web interactiva que muestra el progreso del proyecto, fases completadas y fechas en tiempo real.',
-        price: 2200,
+        title: 'Catálogo de Calzado Deportivo',
+        description: 'Estilo dinámico, moderno y lleno de energía ideal para marcas deportivas y calzado especializado.',
+        price: 3200,
         rating: 4.8,
-        category: 'GESTIÓN WEB',
-        thumbnail: 'assets/creative_module.png'
+        category: 'SPORTS & ATHLETICS',
+        thumbnail: 'assets/calzado.png'
       },
       {
         id: 'web-5',
-        title: 'Bóveda Web de Archivos & Documentación',
-        description: 'Repositorio web encriptado de almacenamiento con control granular de accesos por cliente e historial de versiones.',
-        price: 1900,
-        rating: 4.8,
-        category: 'VAULT & STORAGE WEB',
-        thumbnail: 'assets/vault_module.png'
+        title: 'Lookbook de Diseño de Interiores',
+        description: 'Maquetación editorial espaciosa de estilo escandinavo para firmas de arquitectura e interiorismo.',
+        price: 3900,
+        rating: 4.9,
+        category: 'INTERIORES & DESIGN',
+        thumbnail: 'assets/diseño_interiores.png'
       },
       {
         id: 'web-6',
-        title: 'Visor Web Multicapa CAD & Blueprint 3D',
-        description: 'Visualizador web interactivo para planos de planta, renders 3D y modelos BIM integrados en tu subdominio.',
-        price: 4200,
-        rating: 5.0,
-        category: 'ARQUITECTURA WEB',
-        thumbnail: 'assets/cad_module.png'
+        title: 'Tienda de Alimentos Orgánicos',
+        description: 'Diseño limpio, fresco y muy intuitivo para mercados orgánicos, bebidas naturales y productos gourmet.',
+        price: 2600,
+        rating: 4.8,
+        category: 'ORGANIC & FOOD',
+        thumbnail: 'assets/alimentosO.png'
       }
     ];
 
